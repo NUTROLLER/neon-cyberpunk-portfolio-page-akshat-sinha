@@ -1,7 +1,7 @@
 # neon-cyberpunk-portfolio-page
 A futuristic cyberpunk themed portfolio website for GDG's frotend tech interview
-# Cyberpunk Neon Retro Portfolio [Click Here](https://neon-cyberpunk-portfolio-page-aksha.vercel.app/)
-## For the app link: Click Here
+# Cyberpunk Neon Retro Portfolio 
+## For the app link: [Click Here](https://neon-cyberpunk-portfolio-page-aksha.vercel.app/)
 This is a **cyberpunk-themed neon retro portfolio** built to showcase creativity and front-end skills for the GDG. The design combines futuristic aesthetics with interactive web effects inspired by classic cyberpunk visuals.
 
 ---
