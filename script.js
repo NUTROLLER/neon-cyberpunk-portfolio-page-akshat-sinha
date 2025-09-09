@@ -63,3 +63,9 @@ const navMenu = document.getElementById('nav-menu');
 toggleButton.addEventListener('click', () => {
   navMenu.classList.toggle('active');
 });
+
+//Fake Submit
+const submitBtn = document.querySelector(".glitch-button")
+submitBtn.addEventListener('click', ()=>{
+  alert("Your message has been sent!");
+})

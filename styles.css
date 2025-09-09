@@ -801,6 +801,7 @@ footer div h1 a {
   .contactForm input{
     width: 60%;
     height: 5vh;
+    font-size: 1em;
   }
   .contactForm button{
     padding: 50px;
@@ -985,7 +986,7 @@ footer{
   .typewriter-text{
     font-size: 2.5rem;
   }
-  .typewriter-slow{
+  .typewriter-slow span{
     font-size: 2rem;
   }
   .skills{
