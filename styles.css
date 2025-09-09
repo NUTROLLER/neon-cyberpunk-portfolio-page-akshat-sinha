@@ -1,0 +1,873 @@
+@font-face {
+  font-family: 'Valorax';
+  src: url(assets/fonts/Valorax-lg25V.otf);
+}
+
+* {
+  scroll-behavior: smooth;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+html {
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+/* This is for scroll bar (only on webkit browsers) */
+/* Scrollbar Track */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+/* Scrollbar Background */
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 6px;
+}
+
+/* Scrollbar Thumb (the draggable part) */
+::-webkit-scrollbar-thumb {
+  background: #ea00d9;
+  border-radius: 6px;
+  box-shadow: 0 0 10px #ea00d9, 0 0 20px #ea00d9, 0 0 40px #ea00d9;
+  transition: background 0.3s ease;
+}
+
+/* On Hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #ff33f7;
+  box-shadow: 0 0 12px #ff33f7, 0 0 24px #ff33f7;
+}
+
+body {
+  background-image:
+    linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, black 100%),
+    url(assets/images/city3.png);
+  backdrop-filter: blur(3px);
+  min-height: 100%;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  position: relative;
+  z-index: 0;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: white;
+  background-color: black;
+  width: 100vw;
+  height: 100vh;
+  perspective: 1px;
+  transform-style: preserve-3d;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+/* EXPERIMENTAL PARALLAX START */
+#parallax-bg {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+  z-index: -2;
+  pointer-events: none;
+}
+
+.layer {
+  background-attachment: fixed;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  will-change: transform;
+}
+/* EXPERIMENTAL PARALLAX END */
+
+main {
+  margin-bottom: 100px;
+}
+
+/* NAVBAR */
+nav ul li {
+
+  list-style: none;
+  font-family: 'Valorax', 'Seoge UI', Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  color: #ffffff;
+  /*  */
+  cursor: pointer;
+  animation: flicker 5s infinite alternate;
+  position: relative;
+  overflow: hidden;
+  padding: 5px 15px;
+  transition: color 0.3s ease;
+  cursor: pointer;
+}
+
+nav ul li:hover {
+  color: #ea00d9;
+  animation: glitch-flicker 0.3s steps(2, end) 3;
+  text-shadow: 0 0 5px #ea00d9, 0 0 10px #ea00d9;
+}
+
+@keyframes glitch-flicker {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  25% {
+    transform: translateX(-1px);
+    opacity: 0.7;
+  }
+
+  50% {
+    transform: translateX(1px);
+    opacity: 1;
+  }
+
+  75% {
+    transform: translateX(-1px);
+    opacity: 0.8;
+  }
+
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Keyframes for streak */
+@keyframes sweep {
+  from {
+    transform: translateX(-100%) rotate(25deg);
+  }
+
+  to {
+    transform: translateX(100%) rotate(25deg);
+  }
+}
+
+@keyframes flicker {
+
+  0%,
+  18%,
+  22%,
+  25%,
+  53%,
+  57%,
+  100% {
+    text-shadow:
+      0px 0px 4px #ea00d9,
+      0px 0px 10px #ea00d9,
+      0px 0px 21px #ea00d9;
+  }
+
+  20%,
+  24%,
+  55% {
+    text-shadow:
+      0px 0px 4px #ea00d9,
+      0px 0px 10px #ea00d9;
+  }
+}
+
+nav {
+  box-sizing: border-box;
+  width: 100vw;
+  padding: 20px;
+  height: 12vh;
+  border-radius: 5px;
+  position: sticky;
+  top: 0px;
+  z-index: 99;
+  backdrop-filter: blur(20px);
+  background: rgba(16, 0, 0, 0.559);
+  border: 1px solid rgba(255, 255, 255, 0.409);
+}
+
+nav ul {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+}
+
+
+/* Typewriter text */
+@keyframes reveal {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* Blinking cursor */
+.cursor {
+  position: relative;
+  font-weight: bold;
+  animation: reveal 1s forwards;
+  animation-delay: 2s;
+  animation: blink 1s step-end infinite;
+  font-size: 100px;
+  text-shadow:
+      0px 0px 4px #ea00d9,
+      0px 0px 10px #ea00d9;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+
+}
+
+.typewriter-container {
+  width: 100vw;
+  height: 40vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  white-space: nowrap;
+  animation: typing 2s steps(40, end),
+    0.75s step-end infinite;
+}
+
+.typewriter-slow {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  white-space: nowrap;
+  animation: typing 2s 2s steps(40, end);
+  opacity: 0;
+  animation: reveal 1s forwards;
+  animation-delay: 2s;
+  /* This makes the text appear after 2 seconds */
+}
+
+@keyframes typing {
+  from {
+    width: 0%
+  }
+
+  to {
+    width: 100%
+  }
+}
+
+.typewriter-text {
+  margin: 30px;
+  color: white;
+  font-family: monospace, 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  letter-spacing: -5;
+  text-shadow:
+    0px 0px 4px #ea00d9,
+    0px 0px 10px #ea00d9,
+    0px 0px 21px #ea00d9;
+  font-size: 7vw;
+}
+
+/* Typewriter text finished */
+.skills {
+  display: flex;
+  justify-content: center;
+  font-size: 3rem;
+  margin-bottom: 50px;
+  animation: flicker 2s infinite alternate;
+}
+
+@keyframes flicker {
+
+  0%,
+  100% {
+    text-shadow: 0 0 5px #ea00d9, 0 0 10px #ea00d9, 0 0 20px #ea00d9;
+    opacity: 1;
+  }
+
+  50% {
+    text-shadow: none;
+    opacity: 0.6;
+  }
+}
+
+.skill-cards {
+  box-sizing: border-box;
+  display: flex;
+  margin-bottom: 30vh;
+  perspective: 800px;
+}
+
+/* Here is the images inside the divs */
+#html img {
+  width: 60px;
+  margin-bottom: 10px;
+  filter: drop-shadow(0 0 5px #ea00d9);
+}
+
+#css img {
+  width: 60px;
+  margin-bottom: 10px;
+  filter: drop-shadow(0 0 5px #ea00d9);
+}
+
+#js img {
+  width: 60px;
+  margin-bottom: 10px;
+  filter: drop-shadow(0 0 5px #ea00d9);
+}
+
+#node img {
+  width: 60px;
+  margin-bottom: 10px;
+  filter: drop-shadow(0 0 5px #ea00d9);
+}
+
+
+/* Skill cards */
+.card {
+  overflow: hidden;
+  border-radius: 7px;
+  padding: 20px;
+  border: 1px solid rgb(255, 255, 255);
+  width: 20vw;
+  margin: 20px;
+  height: 60vh;
+  cursor: pointer;
+  transition: transform 0.2s ease 0s;
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transform-style: preserve-3d;
+}
+
+.card:hover {
+  /* transform: scale(1.1); */
+  transform: scale(1.05) rotateX(3deg) rotateY(-3deg);
+  box-shadow: 0px 0px 25px 5px #0abdc6;
+  animation: neon-pulse 1.5s infinite;
+}
+
+@keyframes neon-pulse {
+
+  0%,
+  100% {
+    box-shadow: 0 0 5px #0abdc6, 0 0 10px #0abdc6, 0 0 20px #0abdc6;
+  }
+
+  50% {
+    box-shadow: 0 0 10px #0abdc6, 0 0 20px #0abdc6, 0 0 30px #0abdc6;
+  }
+}
+
+.project-card.flipped .project-card-inner {
+  transform: rotateY(180deg);
+}
+
+.project-container {
+  perspective: 1000px;
+  box-sizing: border-box;
+  display: flex;
+  width: 100vw;
+  margin-bottom: 200px;
+  /* border: 1px solid red; */
+}
+
+.project-card {
+  /* border: 1px solid white; */
+  position: relative;
+  overflow: hidden;
+  width: 50vw;
+  height: 300px;
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
+  margin: 10px;
+  border-radius: 7px;
+  cursor: pointer;
+  perspective: 1000px;
+}
+
+.project-card-front::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(120deg,
+      rgba(255, 255, 255, 0) 30%,
+      rgba(255, 255, 255, 0.5) 50%,
+      rgba(255, 255, 255, 0) 70%);
+  transform: rotate(0deg);
+  animation: shine 3s infinite;
+  pointer-events: none;
+  /* Let clicks pass through */
+  z-index: 2;
+  /* Should be above content but below front/back if needed */
+  opacity: 0.3;
+}
+
+/* Shine animation */
+@keyframes shine {
+  0% {
+    transform: translateX(-100%) translateY(-100%) rotate(25deg);
+  }
+
+  100% {
+    transform: translateX(100%) translateY(100%) rotate(25deg);
+  }
+}
+
+.project-card-front,
+.project-card-back {
+  height: 100%;
+  background: #22222293;
+  /* ✅ Ensure content separation */
+  ;
+  position: absolute;
+  width: 100%;
+  border-radius: 7px;
+  backface-visibility: hidden;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+
+}
+
+.project-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.project-card-front {
+  transform: rotateY(0deg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.project-card-back {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transform: rotateY(180deg);
+  /* display: block; */
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+#spotify .project-card-back::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url(assets/images/spotify-demo-image.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.25;
+  filter: blur(1px);
+  z-index: 0;
+}
+
+#netflix .project-card-back::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url(assets/images/netflix-demo-image.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.2;
+  z-index: 0;
+  filter: blur(1px);
+}
+
+#spotify .project-card-back>* {
+  position: relative;
+  z-index: 1;
+  /* Keep text above the image */
+  text-shadow: 0px 0px 4px #189243,
+    0px 0px 10px #189243;
+}
+
+#netflix .project-card-back>* {
+  position: relative;
+  z-index: 1;
+  /* Keep text above the image */
+  text-shadow: 0px 0px 4px #E50914,
+    0px 0px 10px #E50914;
+}
+
+/* .project-container .project-card:hover{
+  transform: rotateY(180deg);
+} */
+/* Images inside project cards */
+.project-card-front img {
+  width: 50px;
+}
+
+/* Making project cards glow */
+#spotify {
+  box-shadow: 0px 0px 20px 10px #1DB954;
+}
+
+#netflix {
+  box-shadow: 0px 0px 20px 10px #E50914;
+}
+
+/* Contact section */
+.contact {
+  width: 100%;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Contact Us */
+.contact {
+  /* border: 1px solid magenta; */
+  width: 100vw;
+  height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 100px;
+}
+
+.contactDiv {
+  box-sizing: border-box;
+  padding: 20px;
+  /* border: 1px solid red; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contactDiv * {
+  margin: 3px;
+}
+
+.contactForm {
+  background: rgba(255, 255, 255, 0.05);
+  /* light glass effect */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 2px solid rgba(234, 0, 217, 0.5);
+  box-shadow: 0 0 15px #ea00d9, 0 0 40px #ea00d9;
+  padding: 40px;
+  border-radius: 15px;
+  max-width: 500px;
+  width: 100%;
+  z-index: 2;
+  color: white;
+  font-family: 'Valorax', monospace;
+  text-shadow: 0 0 4px #ea00d9;
+  font-size: 20px;
+  width: 100%;
+}
+
+.contactForm input {
+  padding: 5px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.contactForm button {
+  padding: 10px;
+  width: 90px;
+  border-radius: 7px;
+}
+
+/* Button glitch as asked lol */
+.glitch-button {
+  position: relative;
+  display: inline-block;
+  color: #000;
+  background-color: #ea00d9;
+  border: none;
+  padding: 15px 30px;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  overflow: hidden;
+  text-transform: uppercase;
+  box-shadow: 0 0 10px #ea00d9, 0 0 20px #ea00d9;
+  transition: transform 0.2s ease;
+}
+
+.glitch-button:hover {
+  transform: scale(1.05);
+}
+
+.glitch-button::before,
+.glitch-button::after {
+  content: "Send";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  color: #000;
+  background-color: #ea00d9;
+  border-radius: 8px;
+  pointer-events: none;
+}
+
+.glitch-button::before {
+  left: 2px;
+  text-shadow: -2px 0 magenta;
+  animation: glitch 1s infinite linear alternate-reverse;
+  opacity: 0.7;
+}
+
+.glitch-button::after {
+  left: -2px;
+  text-shadow: -2px 0 cyan;
+  animation: glitch 1s infinite linear alternate;
+  opacity: 0.7;
+}
+
+@keyframes glitch {
+  0% {
+    clip-path: inset(0 0 20% 0);
+    transform: translate(-1px, -1px);
+  }
+
+  20% {
+    clip-path: inset(10% 0 30% 0);
+    transform: translate(1px, 1px);
+  }
+
+  40% {
+    clip-path: inset(30% 0 50% 0);
+    transform: translate(-2px, 1px);
+  }
+
+  60% {
+    clip-path: inset(50% 0 70% 0);
+    transform: translate(1px, -1px);
+  }
+
+  80% {
+    clip-path: inset(70% 0 90% 0);
+    transform: translate(-1px, 2px);
+  }
+
+  100% {
+    clip-path: inset(90% 0 100% 0);
+    transform: translate(0);
+  }
+}
+
+footer {
+  width: 100vw;
+  height: 20vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to bottom, transparent, black);
+}
+
+.footer-text {
+  /* border: 1px solid red; */
+  text-shadow:
+    0px 0px 4px #ea00d9,
+    0px 0px 10px #ea00d9,
+    0px 0px 21px #ea00d9;
+}
+
+footer div h1 a {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+
+/* Media Queries -- Responsiveness finally */
+/* Responsive layout adjustments */
+@media (max-width: 1200px) {
+  .skill-cards {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .card {
+    width: 45vw;
+    height: auto;
+    margin: 15px;
+  }
+  
+  .project-container {
+    flex-wrap: wrap;
+  }
+  
+  .project-card {
+    width: 90vw;
+    height: 350px;
+    margin: 15px 0;
+  }
+}
+
+@media (max-width: 768px) {
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+
+  nav ul li {
+    font-size: 18px;
+  }
+
+  main .typewriter-text {
+    font-size: 10vw !important;
+  }
+
+  .typewriter-container,
+  .typewriter-slow {
+    height: auto;
+  }
+
+  .card {
+    width: 90vw;
+    height: auto;
+  }
+
+  .project-card {
+    width: 90vw;
+    height: 300px;
+  }
+
+  .contact {
+    height: auto;
+    padding: 30px 10px;
+  }
+
+  .contactForm {
+    padding: 30px 15px;
+    font-size: 18px;
+  }
+
+  .contactForm input {
+    font-size: 16px;
+  }
+
+  .glitch-button {
+    width: 100%;
+    padding: 15px 0;
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  nav ul li {
+    font-size: 16px;
+    padding: 8px 10px;
+  }
+
+  main .typewriter-text {
+    font-size: 8vw !important;
+  }
+
+  .card {
+    width: 95vw;
+    margin: 10px 0;
+    height: auto;
+  }
+
+  .project-card {
+    width: 95vw;
+    height: 250px;
+  }
+
+  .skills {
+    font-size: 2rem;
+  }
+}
+
+/* Mouse trails */
+#trail-container {
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  overflow: visible;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99999;
+  pointer-events: none;
+}
+
+.trail-dot {
+  z-index: 10000;
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: #ea00d9;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #00ffe7, 0 0 20px #ea00d9;
+  animation: fadeOut 0.5s forwards;
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    transform: scale(2);
+  }
+}
+
+/* CRT Effect */
+.crt-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.05) 0px,
+    rgba(255, 255, 255, 0.05) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  animation: flickerCRT 0.7s infinite;
+  mix-blend-mode: overlay;
+  opacity: 0.9;
+}
+@keyframes flickerCRT {
+  50%{
+    opacity: 0.5;
+  }
+}
+canvas{
+  position: absolute;
+  z-index: 12000;
+  /* border: 1px solid red; */
+  height: 30vh;
+  width: 100vw;
+}
